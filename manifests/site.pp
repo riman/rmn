@@ -2,6 +2,13 @@ class update_start {
   notify {"Starting configuration update":}
 }
 
+node 'Weee-PC' {
+  package { 'Sublime Text 2.0.2':
+    ensure => 'installed',
+    source => 'g:\WORK\ArtefactsRepository\Sublime\Sublime Text 2.0.2 x64 Setup.exe',
+    install_options => ['/VERYSILENT', '/NORESTART', '/TASKS="contextentry"'],
+  }
+}
 node 'rmn000767' {
   include update_start
   package {'mc' : 
