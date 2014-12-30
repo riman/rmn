@@ -2,13 +2,30 @@ class update_start {
   notify {"Starting configuration update":}
 }
 
+class vars{
+  notice("We're in ${::osfamily} system")
+  case $::osfamily {
+    "windows": {
+      $binaries_repository_path = "g:\\WORK\\ArtefactsRepository"
+      $sublime2 = "Sublime Text 2.0.2"
+      notice("binaries_repository_path = ${binaries_repository_path}")
+      notice("sublime2 = ${sublime2}")
+    }
+    default: {
+      notice("We're in friendly ${::osfamily} system")
+    }
+  }
+}
+
 node 'Weee-PC' {
-  package { 'Sublime Text 2.0.2':
+  include vars
+  package { $vars::sublime2:
     ensure => 'installed',
-    source => 'g:\WORK\ArtefactsRepository\Sublime\Sublime Text 2.0.2 x64 Setup.exe',
+    source => "${vars::binaries_repository_path}\\Sublime\\Sublime Text 2.0.2 x64 Setup.exe",
     install_options => ['/VERYSILENT', '/NORESTART', '/TASKS="contextentry"'],
   }
 }
+
 node 'rmn000767' {
   include update_start
   package {'mc' : 
