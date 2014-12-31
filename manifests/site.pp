@@ -99,3 +99,4 @@ node 'rmn000767' {
     require => User['maven']
   }
 }
+
