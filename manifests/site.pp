@@ -1,5 +1,6 @@
 class update_start {
   notify {"Starting configuration update":}
+  notice('Hello there!')
 }
 
 class vars{
