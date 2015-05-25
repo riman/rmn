@@ -57,7 +57,7 @@ node 'rmn000767' {
   }
   # Install Maven
   class {"maven::maven":
-    version => "3.2.2",
+    version => "3.2.3",
     repo => {
       #url => "http://repo.maven.apache.org/maven2",
       #username => "",
